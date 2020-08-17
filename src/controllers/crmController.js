@@ -46,3 +46,12 @@ export const updateContact = (req, res) => {
             res.json(contact);
         });
 };
+
+export const deleteContact = (req, res) => {
+    Contact.remove({ _id: req.params.contactId }, (err, contact) => { // param must match with the one specified in crmRoutes
+        if (err) {
+            res.send(err);
+        }
+        res.json({message: "Successfully deleted contact"});
+    });
+};
