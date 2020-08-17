@@ -48,7 +48,7 @@ export const updateContact = (req, res) => {
 };
 
 export const deleteContact = (req, res) => {
-    Contact.remove({ _id: req.params.contactId }, (err, contact) => { // param must match with the one specified in crmRoutes
+    Contact.deleteOne({ _id: req.params.contactId }, (err, contact) => { // param must match with the one specified in crmRoutes
         if (err) {
             res.send(err);
         }
