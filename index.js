@@ -13,6 +13,12 @@ mongoose.connect("mongodb://localhost/CRMdb", {
     useUnifiedTopology: true
 });
 
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "Connection error:"));
+db.once("open", () => {
+    console.log("Connected successfully to the MongoDB server.")
+});
+
 // ---------- Body Parser Connection ---------- //
 /* Allow body-parser to parse the requests that are coming in,
 ** and parse it in a way which is readable by the API.*/
