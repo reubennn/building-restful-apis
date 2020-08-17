@@ -27,6 +27,11 @@ app.use(bodyParser.json());
 
 routes(app);
 
+// Serving static files
+app.use(express.static("public"));
+// http://localhost:4000/football.jpeg
+// http://localhost:4000/sky.jpeg
+
 app.get("/", (req, res) => {
     res.send(`Node and Express server running on http://localhost:${PORT}.`);
 });
