@@ -31,3 +31,18 @@ export const getContactWithId = (req, res) => {
         res.json(contact);
     });
 };
+
+export const updateContact = (req, res) => {
+    Contact.findOneAndUpdate(
+        { _id: req.params.contactId },
+        req.body,
+        { new: true, useFindAndModify: false },
+        // new: true - tells MongoDB to return the updated contact (false returns the old object)
+        // useFindAndModify: false - no errors in message with deprecated warnings
+        (err, contact) => {
+            if (err) {
+                res.send(err);
+            }
+            res.json(contact);
+        });
+};
